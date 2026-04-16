@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36811.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginWithOTP", "LoginWithOTP\LoginWithOTP.csproj", "{FD910457-F423-4918-8825-AD092991026D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginWithOTP.Services", "LoginWithOTP.Services\LoginWithOTP.Services.csproj", "{540FEB8F-7994-4942-896B-0AE0CC8735D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginWithOTP.Repository", "LoginWithOTP.Repository\LoginWithOTP.Repository.csproj", "{0825803B-74A7-4CDE-B930-AB4D8FDAF875}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginWithOTP.Shared", "LoginWithOTP.Shared\LoginWithOTP.Shared.csproj", "{57B77EF5-79EA-4741-AB31-1A200DF1238F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginWithOTP.DbLayer", "LoginWithOTP.DbLayer\LoginWithOTP.DbLayer.csproj", "{C6CB9603-D9A8-44FA-9465-F99AC8FE5697}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginWithOTP.Core", "LoginWithOTP.Core\LoginWithOTP.Core.csproj", "{03047023-0993-43B7-93B1-857BE3AE6A0F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD910457-F423-4918-8825-AD092991026D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD910457-F423-4918-8825-AD092991026D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD910457-F423-4918-8825-AD092991026D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD910457-F423-4918-8825-AD092991026D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{540FEB8F-7994-4942-896B-0AE0CC8735D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{540FEB8F-7994-4942-896B-0AE0CC8735D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{540FEB8F-7994-4942-896B-0AE0CC8735D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{540FEB8F-7994-4942-896B-0AE0CC8735D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0825803B-74A7-4CDE-B930-AB4D8FDAF875}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0825803B-74A7-4CDE-B930-AB4D8FDAF875}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0825803B-74A7-4CDE-B930-AB4D8FDAF875}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0825803B-74A7-4CDE-B930-AB4D8FDAF875}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57B77EF5-79EA-4741-AB31-1A200DF1238F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57B77EF5-79EA-4741-AB31-1A200DF1238F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57B77EF5-79EA-4741-AB31-1A200DF1238F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57B77EF5-79EA-4741-AB31-1A200DF1238F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6CB9603-D9A8-44FA-9465-F99AC8FE5697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6CB9603-D9A8-44FA-9465-F99AC8FE5697}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6CB9603-D9A8-44FA-9465-F99AC8FE5697}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6CB9603-D9A8-44FA-9465-F99AC8FE5697}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03047023-0993-43B7-93B1-857BE3AE6A0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03047023-0993-43B7-93B1-857BE3AE6A0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03047023-0993-43B7-93B1-857BE3AE6A0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03047023-0993-43B7-93B1-857BE3AE6A0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A465DF8-9E17-4B66-8510-F110CF0D20C7}
+	EndGlobalSection
+EndGlobal

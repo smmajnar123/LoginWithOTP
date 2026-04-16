@@ -1,0 +1,6 @@
+@LoginWithOTP_HostAddress = http://localhost:5128
+
+GET {{LoginWithOTP_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
