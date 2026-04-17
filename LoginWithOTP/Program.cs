@@ -1,4 +1,6 @@
 
+using LoginWithOTP.DbLayer.Models;
+using MongoDB.Driver;
 namespace LoginWithOTP
 {
     public class Program
@@ -6,6 +8,17 @@ namespace LoginWithOTP
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+
+            // Mongo Client
+            builder.Services.AddSingleton<IMongoClient>(sp =>
+            {
+                var settings = builder.Configuration
+                    .GetSection("MongoDbSettings")
+                    .Get<MongoDbSettings>();
+
+                return new MongoClient(settings?.ConnectionString);
+            });
 
             // Add services to the container.
 
