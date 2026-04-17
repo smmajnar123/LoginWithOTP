@@ -12,5 +12,6 @@ namespace LoginWithOTP.Repository.IRepository
         Task SaveOtpAsync(OtpRecordDocument otp);
         Task<OtpRecordDocument?> GetLatestOtpAsync(string mobileNumber);
         Task UpdateOtpAsync(OtpRecordDocument otp);
+        Task<int> GetRecentOtpCountAsync(string mobileNumber, DateTime fromTime);
     }
 }

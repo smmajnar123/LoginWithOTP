@@ -1,36 +1,48 @@
-﻿using LoginWithOTP.Shared.Constants;
+﻿using LoginWithOTP.Services.IServices;
+using LoginWithOTP.Shared.Constants;
 using LoginWithOTP.Shared.ReqModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 
 namespace LoginWithOTP.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OtpController : ControllerBase
+    public class OtpController(IOtpService otpService, ILogger<OtpController> logger) : ControllerBase
     {
+        private readonly IOtpService _otpService = otpService;
+        private readonly ILogger<OtpController> _logger = logger;
+
         [HttpPost("send")]
-        public IActionResult SendOtp([FromBody] SendOtpRequest request)
+        public async Task<IActionResult> SendOtp([FromBody] SendOtpRequest request)
         {
-            if (request != null && !string.IsNullOrEmpty(request.MobileNumber))
+            try
             {
-                return Ok(new { Message = MessageConstants.OTP_SENT_SUCCESS });
+                _logger.LogInformation("API Hit: Send OTP for {Mobile}", request.MobileNumber);
+                var result = await _otpService.SendOtpAsync(request.MobileNumber);
+                return Ok(new { success = true, message = result });
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest(new { Message = MessageConstants.OTP_SENT_FAILURE });
+                _logger.LogError(ex, "Error sending OTP for {Mobile}", request.MobileNumber);
+                return BadRequest(new { success = false, message = ex.Message });
             }
         }
         [HttpPost("verify")]
-        public IActionResult VerifyOtp([FromBody] VerifyOtpRequest request)
+        public async Task<IActionResult> VerifyOtp([FromBody] VerifyOtpRequest request)
         {
-            if (request.OtpCode == "123456")
+            string mobile = request.MobileNumber;
+            string otp = request.OtpCode;
+            _logger.LogInformation("API Hit: Verify OTP for {Mobile}", mobile);
+            var isValid = await _otpService.VerifyOtpAsync(mobile, otp);
+
+            if (!isValid)
             {
-                return Ok(new { Message = MessageConstants.OTP_VERIFIED_SUCCESS });
+                _logger.LogWarning("OTP verification failed for {Mobile}", mobile);
+                return BadRequest(new { success = false, message = MessageConstants.OTP_INVALID });
             }
-            else
-            {
-                return BadRequest(new { Message = MessageConstants.OTP_INVALID });
-            }
+            
+            return Ok(new { success = true, message = MessageConstants.OTP_VERIFIED_SUCCESS });
         }
     }
 }

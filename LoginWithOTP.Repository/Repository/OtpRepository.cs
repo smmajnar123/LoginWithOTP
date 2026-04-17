@@ -39,5 +39,11 @@ namespace LoginWithOTP.Repository.Repository
         {
             await _collection.ReplaceOneAsync(x => x.Id == otp.Id, otp);
         }
+        public async Task<int> GetRecentOtpCountAsync(string mobileNumber, DateTime fromTime)
+        {
+            return (int)await _collection.CountDocumentsAsync(x =>
+                x.MobileNumber == mobileNumber &&
+                x.CreatedAt >= fromTime);
+        }
     }
 }
