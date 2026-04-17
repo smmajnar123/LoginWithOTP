@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LoginWithOTP.DbLayer\LoginWithOTP.DbLayer.csproj" />
+    <ProjectReference Include="..\LoginWithOTP.Repository\LoginWithOTP.Repository.csproj" />
+    <ProjectReference Include="..\LoginWithOTP.Services\LoginWithOTP.Services.csproj" />
     <ProjectReference Include="..\LoginWithOTP.Shared\LoginWithOTP.Shared.csproj" />
   </ItemGroup>
 

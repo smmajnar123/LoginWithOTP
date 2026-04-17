@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LoginWithOTP.DbLayer\LoginWithOTP.DbLayer.csproj" />
+  </ItemGroup>
+
 </Project>
