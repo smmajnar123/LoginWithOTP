@@ -13,7 +13,6 @@ namespace LoginWithOTP.DbLayer.Initializers
         {
             try
             {
-
                 var collections = await _database.ListCollectionNames().ToListAsync();
 
                 // ✅ Create Users Collection

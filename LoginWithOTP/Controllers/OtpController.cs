@@ -1,12 +1,11 @@
-﻿using LoginWithOTP.Services.IServices;
+﻿using LoginWithOTP.DTO.ReqModels;
+using LoginWithOTP.Services.IServices;
 using LoginWithOTP.Shared.Constants;
-using LoginWithOTP.Shared.ReqModels;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection;
 
 namespace LoginWithOTP.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/otp")]
     [ApiController]
     public class OtpController(IOtpService otpService, ILogger<OtpController> logger) : ControllerBase
     {

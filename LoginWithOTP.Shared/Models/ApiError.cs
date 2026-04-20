@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoginWithOTP.Shared.ResModels
+namespace LoginWithOTP.Shared.Models
 {
-    public class BaseResponse
+    public class ApiError
     {
-        public bool Success { get; set; }
+        public string? Field { get; set; }
         public string? Message { get; set; }
-        public string? ErrorCode { get; set; }
     }
 }

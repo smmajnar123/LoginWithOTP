@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoginWithOTP.Shared.ReqModels
+namespace LoginWithOTP.DTO.ReqModels
 {
     public class VerifyOtpRequest
     {
