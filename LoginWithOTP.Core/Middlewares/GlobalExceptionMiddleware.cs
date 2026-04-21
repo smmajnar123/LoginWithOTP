@@ -13,7 +13,6 @@ namespace LoginWithOTP.Core.Middlewares
     {
         private readonly RequestDelegate _next = next;
         private readonly ILogger<GlobalExceptionMiddleware> _logger = logger;
-
         public async Task Invoke(HttpContext context)
         {
             try
@@ -29,7 +28,6 @@ namespace LoginWithOTP.Core.Middlewares
         private async Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
             var traceId = context.TraceIdentifier;
-
             int statusCode = StatusCodes.Status500InternalServerError;
             string message = "An unexpected error occurred";
             string errorCode = "SERVER_ERROR";
@@ -41,7 +39,6 @@ namespace LoginWithOTP.Core.Middlewares
                     statusCode = baseEx.StatusCode;
                     message = baseEx.Message;
                     errorCode = baseEx.Code;
-
                     if (baseEx is ValidationException valEx)
                         errors = valEx.Errors;
                     break;

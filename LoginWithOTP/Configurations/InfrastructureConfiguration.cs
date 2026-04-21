@@ -14,7 +14,6 @@ namespace LoginWithOTP.Configurations
             this IServiceCollection services,
             IConfiguration config)
         {
-            // 🔹 Bind Settings
             services.Configure<MongoDbSettings>(
                 config.GetSection("MongoDbSettings"));
 
@@ -24,7 +23,6 @@ namespace LoginWithOTP.Configurations
             services.Configure<JwtSettings>(
                 config.GetSection("JwtSettings"));
 
-            // 🔹 Inject Settings
             services.AddSingleton(sp =>
                 sp.GetRequiredService<IOptions<MongoDbSettings>>().Value);
 
@@ -34,7 +32,6 @@ namespace LoginWithOTP.Configurations
             services.AddSingleton(sp =>
                 sp.GetRequiredService<IOptions<JwtSettings>>().Value);
 
-            // 🔹 Mongo
             services.AddSingleton<IMongoClient>(sp =>
             {
                 var settings = sp.GetRequiredService<MongoDbSettings>();
@@ -42,17 +39,12 @@ namespace LoginWithOTP.Configurations
             });
 
             services.AddSingleton<MongoDbContext>();
-
-            // 🔹 Redis
             services.AddSingleton<IConnectionMultiplexer>(sp =>
             {
                 var redis = sp.GetRequiredService<RedisSettings>();
                 return ConnectionMultiplexer.Connect(redis.ConnectionString);
             });
-
-            // 🔹 DB Init
             services.AddSingleton<MongoInitializer>();
-
             return services;
         }
     }

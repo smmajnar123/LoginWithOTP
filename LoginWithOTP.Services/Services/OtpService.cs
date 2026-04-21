@@ -7,7 +7,6 @@ namespace LoginWithOTP.Services.Services
     {
         private readonly Repository.IRepository.IOtpRepository _otpRepository = otpRepository;
         private readonly ILogger<OtpService> _logger = logger;
-
         public async Task<string> SendOtpAsync(string mobile)
         {
             _logger.LogInformation("SendOtp request for {Mobile}", mobile);
@@ -21,9 +20,7 @@ namespace LoginWithOTP.Services.Services
             }
 
             var otp = new Random().Next(100000, 999999).ToString();
-
             var hashedOtp = Core.Security.OtpSecurity.HashOtp(mobile, otp);
-
             var otpRecord = new DbLayer.Collections.OtpRecordDocument
             {
                 Id = Guid.NewGuid(),
@@ -62,12 +59,10 @@ namespace LoginWithOTP.Services.Services
             }
 
             var inputHash = Core.Security.OtpSecurity.HashOtp(mobile, otp);
-
             if (otpRecord.OtpCode != inputHash)
             {
                 otpRecord.AttemptCount++;
                 await _otpRepository.UpdateOtpAsync(otpRecord);
-
                 _logger.LogWarning("Invalid OTP for {Mobile}", mobile);
                 return false;
             }

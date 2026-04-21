@@ -40,7 +40,6 @@ namespace LoginWithOTP.Controllers
                 _logger.LogWarning("OTP verification failed for {Mobile}", mobile);
                 return BadRequest(new { success = false, message = MessageConstants.OTP_INVALID });
             }
-            
             return Ok(new { success = true, message = MessageConstants.OTP_VERIFIED_SUCCESS });
         }
     }

@@ -14,29 +14,20 @@ namespace LoginWithOTP.DbLayer.Initializers
             try
             {
                 var collections = await _database.ListCollectionNames().ToListAsync();
-
-                // ✅ Create Users Collection
                 if (!collections.Contains(_settings.Collections["Users"]))
                 {
                     await _database.CreateCollectionAsync(_settings.Collections["Users"]);
                 }
-
-                // ✅ Create OTP Collection
                 if (!collections.Contains(_settings.Collections["OtpRecords"]))
                 {
                     await _database.CreateCollectionAsync(_settings.Collections["OtpRecords"]);
                 }
-
-                // 🔥 Add Index for OTP (IMPORTANT)
                 var otpCollection = _database.GetCollection<BsonDocument>(_settings.Collections["OtpRecords"]);
-
                 var indexKeys = Builders<BsonDocument>.IndexKeys
                     .Ascending("mobileNumber")
                     .Descending("createdAt");
 
                 await otpCollection.Indexes.CreateOneAsync(new CreateIndexModel<BsonDocument>(indexKeys));
-
-                // 🔥 TTL Index (Auto delete expired OTP)
                 var ttlIndex = new CreateIndexModel<BsonDocument>(
                     Builders<BsonDocument>.IndexKeys.Ascending("expiryTime"),
                     new CreateIndexOptions { ExpireAfter = TimeSpan.Zero });

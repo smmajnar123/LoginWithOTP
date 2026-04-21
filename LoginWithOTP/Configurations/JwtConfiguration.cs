@@ -12,7 +12,6 @@ namespace LoginWithOTP.Configurations
             IConfiguration config)
         {
             var jwt = config.GetSection("JwtSettings").Get<JwtSettings>();
-
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -22,7 +21,6 @@ namespace LoginWithOTP.Configurations
                         ValidateAudience = true,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-
                         ValidIssuer = jwt?.Issuer,
                         ValidAudience = jwt?.Audience,
                         IssuerSigningKey = new SymmetricSecurityKey(
